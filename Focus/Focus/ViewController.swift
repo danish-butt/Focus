@@ -9,6 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var timer: UIDatePicker!
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    
+    @IBAction func startButton(_ sender: Any) {
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
