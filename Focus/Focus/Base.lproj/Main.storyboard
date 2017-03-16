@@ -153,7 +153,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="dye-BD-twQ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="75" id="dye-BD-twQ" customClass="HistoryTableViewCell" customModule="Focus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dye-BD-twQ" id="aXg-JK-fk3">
@@ -176,6 +176,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="taskName" destination="V84-yI-Lw2" id="rc1-Tu-7c9"/>
+                                    <outlet property="timeSpent" destination="MC4-2q-vPo" id="lag-8Q-5F6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
