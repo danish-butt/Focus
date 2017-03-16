@@ -78,7 +78,7 @@
         <!--Timer-->
         <scene sceneID="Nlx-dE-ARV">
             <objects>
-                <viewController title="Timer" id="YC0-pw-6oy" sceneMemberID="viewController">
+                <viewController title="Timer" id="YC0-pw-6oy" customClass="ProfileViewController" customModule="Focus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Tf-hA-5pP"/>
                         <viewControllerLayoutGuide type="bottom" id="bC6-GE-Kc4"/>
@@ -115,13 +115,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="total tasks completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swY-ad-jw3">
-                                <rect key="frame" x="39" y="404" width="297" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Tasks Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlB-eA-mK3">
                                 <rect key="frame" x="62" y="463" width="250" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -129,10 +122,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="total tasks completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swY-ad-jw3">
+                                <rect key="frame" x="39" y="404" width="297" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="W6q-Py-AvA"/>
+                    <connections>
+                        <outlet property="averageNumTasksCompletedPerDay" destination="kdr-bu-SXk" id="j4I-Lm-bmA"/>
+                        <outlet property="averageTimeSpentOnATask" destination="991-TP-o4p" id="pK0-6Q-fyk"/>
+                        <outlet property="numTotalTasksCompleted" destination="swY-ad-jw3" id="yEP-3o-QF6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gj3-LT-PPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

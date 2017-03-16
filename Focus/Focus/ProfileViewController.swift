@@ -17,6 +17,16 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Run a query to get total num of tasks completed
+        
+        //Run a query to get total time spent on tasks
+        
+        //Calculate the average time spent on a task
+        
+        //Run a query to get number of days app was used
+        
+        //Calculate average number of tasks completed
+        
         // Do any additional setup after loading the view.
     }
 
