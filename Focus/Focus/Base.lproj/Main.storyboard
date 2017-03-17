@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="-1148" y="-1663.7181409295354"/>
         </scene>
-        <!--Timer-->
+        <!--Profile-->
         <scene sceneID="Nlx-dE-ARV">
             <objects>
-                <viewController title="Timer" id="YC0-pw-6oy" customClass="ProfileViewController" customModule="Focus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Profile" id="YC0-pw-6oy" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Tf-hA-5pP"/>
                         <viewControllerLayoutGuide type="bottom" id="bC6-GE-Kc4"/>
@@ -152,18 +152,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="W6q-Py-AvA"/>
-                    <connections>
-                        <outlet property="averageNumTasksCompletedPerDay" destination="kdr-bu-SXk" id="j4I-Lm-bmA"/>
-                        <outlet property="averageTimeSpentOnATask" destination="991-TP-o4p" id="pK0-6Q-fyk"/>
-                        <outlet property="numTotalTasksCompleted" destination="swY-ad-jw3" id="yEP-3o-QF6"/>
-                    </connections>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profileIcon" id="W6q-Py-AvA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gj3-LT-PPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1148" y="-901.79910044977521"/>
         </scene>
-        <!--Item-->
+        <!--History-->
         <scene sceneID="Hlu-pt-SSL">
             <objects>
                 <tableViewController id="LxR-Md-S1a" customClass="HistoryTableViewController" customModule="Focus" customModuleProvider="target" sceneMemberID="viewController">
@@ -206,7 +201,7 @@
                             <outlet property="delegate" destination="LxR-Md-S1a" id="uo9-8i-EGN"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="DBJ-Hc-hCf"/>
+                    <tabBarItem key="tabBarItem" title="History" image="notebookIcon" id="DBJ-Hc-hCf"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etB-yI-XbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,6 +228,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="notebookIcon" width="25" height="25"/>
+        <image name="profileIcon" width="25" height="25"/>
         <image name="setting" width="25" height="25"/>
     </resources>
 </document>
