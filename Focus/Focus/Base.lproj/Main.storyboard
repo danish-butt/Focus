@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yQ0-Tg-Qzo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yQ0-Tg-Qzo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="-1148" y="-1663"/>
         </scene>
-        <!--Timer-->
+        <!--Profile-->
         <scene sceneID="Nlx-dE-ARV">
             <objects>
-                <viewController title="Timer" id="YC0-pw-6oy" sceneMemberID="viewController">
+                <viewController title="Profile" id="YC0-pw-6oy" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Tf-hA-5pP"/>
                         <viewControllerLayoutGuide type="bottom" id="bC6-GE-Kc4"/>
@@ -133,13 +133,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="W6q-Py-AvA"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profileIcon" id="W6q-Py-AvA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gj3-LT-PPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1148" y="-901.79910044977521"/>
         </scene>
-        <!--Item-->
+        <!--History-->
         <scene sceneID="Hlu-pt-SSL">
             <objects>
                 <tableViewController id="LxR-Md-S1a" sceneMemberID="viewController">
@@ -162,7 +162,7 @@
                             <outlet property="delegate" destination="LxR-Md-S1a" id="uo9-8i-EGN"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="DBJ-Hc-hCf"/>
+                    <tabBarItem key="tabBarItem" title="History" image="notebookIcon" id="DBJ-Hc-hCf"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etB-yI-XbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -189,6 +189,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="notebookIcon" width="25" height="25"/>
+        <image name="profileIcon" width="25" height="25"/>
         <image name="setting" width="25" height="25"/>
     </resources>
 </document>
