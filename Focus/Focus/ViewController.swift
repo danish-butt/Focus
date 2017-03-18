@@ -14,14 +14,11 @@ class ViewController: UIViewController {
     @IBOutlet var Start: UIButton!
     @IBOutlet var Time: UILabel!
     @IBOutlet var not: UILabel!
-
+    
     var t = Timer()
-    var minutes: Int = 0
-    var seconds: Int = 0
-    var fractions: Int = 0
-    var hours: Int = 0
     var timestring = ""
     var timerison = false
+
     
     @IBAction func tap(_ sender: Any) {
 //        if timerison == false{
@@ -45,10 +42,11 @@ class ViewController: UIViewController {
     
     
     @IBAction func startButton(_ sender: Any) {
-        count()
-//
        
+       timer.countDownDuration = timer.countDownDuration * 60
        t = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
+        
+        
         
         t.fire()
         
@@ -60,9 +58,15 @@ class ViewController: UIViewController {
     }
     
     func count(){
+        timer.countDownDuration -= 1
+//        Time.text = "Minutes" + String((timer.countDownDuration/60)) + "Seconds" + String(timer.countDownDuration/60)
         
-         timer.countDownDuration -= 1
-        Time.text = String(timer.countDownDuration)
+        Time.text = String((timer.countDownDuration/60))
+//
+//        if a > 60 {
+//            b = a / 60
+//            Time.text = "\(b) M and \(a) S"
+//        }
         
 //        t = Timer.scheduledTimer(timeInterval: timer.countDownDuration, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
 //    }
@@ -99,14 +103,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      Time.isHidden = true
-        timer.countDownDuration = (00)
-        // Do any additional setup after loading the view, typically from a nib.
+     timer.countDownDuration = (00)
+                // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+//    func takeout(){
+//        
+//    }
 
 
 }
