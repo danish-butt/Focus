@@ -17,7 +17,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -56,9 +56,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Focus" id="WYo-92-fgz">
-                                        <barButtonItem key="rightBarButtonItem" image="setting" id="tOT-wZ-7Gw">
-                                            <inset key="imageInsets" minX="0.0" minY="-2" maxX="3" maxY="2"/>
-                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" image="set" id="tOT-wZ-7Gw"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -74,9 +72,9 @@
                                 </connections>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.92935490610000004" green="0.65891853190000005" blue="0.03140131233" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Focus" id="Xuv-af-wOX"/>
+                    <tabBarItem key="tabBarItem" title="Focus" image="focus" id="Xuv-af-wOX"/>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -229,8 +227,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="focus" width="25" height="25"/>
         <image name="notebookIcon" width="25" height="25"/>
         <image name="profileIcon" width="25" height="25"/>
-        <image name="setting" width="25" height="25"/>
+        <image name="set" width="25" height="25"/>
     </resources>
 </document>
