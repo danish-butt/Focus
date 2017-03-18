@@ -9,15 +9,92 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     @IBOutlet weak var timer: UIDatePicker!
-    
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet var Start: UIButton!
+    @IBOutlet var Time: UILabel!
+    @IBOutlet var not: UILabel!
+
+    var t = Timer()
+    var minutes: Int = 0
+    var seconds: Int = 0
+    var fractions: Int = 0
+    var hours: Int = 0
+    var timestring = ""
+    var timerison = false
+    
+    @IBAction func tap(_ sender: Any) {
+//        if timerison == false{
+//            t = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
+//        count()
+           t.invalidate()
+        
+        nameTextField.isHidden = false
+        timer.isHidden = false
+        Start.isHidden = false
+        Time.isHidden = true
+        not.isHidden = false
+//        }
+//        if timerison == true{
+//            t.invalidate()
+//            timerison = false
+//        }
+//        
+//        timerison = true
+    }
     
     
     @IBAction func startButton(_ sender: Any) {
+        count()
+//
+       
+       t = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
+        
+        t.fire()
+        
+        nameTextField.isHidden = true
+        timer.isHidden = true
+        Start.isHidden = true
+        Time.isHidden = false
+        not.isHidden = true
     }
     
+    func count(){
+        
+         timer.countDownDuration -= 1
+        Time.text = String(timer.countDownDuration)
+        
+//        t = Timer.scheduledTimer(timeInterval: timer.countDownDuration, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
+//    }
+//    
+//    func update(){
+//        
+//        fractions -= 100
+//        if fractions == 1{
+//            
+//            seconds -= 1
+//            fractions = 0
+//        }
+//        
+//        if seconds == 60{
+//            
+//            minutes -= 1
+//            seconds = 0
+//        }
+//        
+//        if minutes == 60{
+//            
+//            hours -= 1
+//            minutes = 0
+//        }
+//    
+//        let fractionsString = fractions > 9 ? "\(fractions)" : "0\(fractions)"
+//        let secondsString = seconds > 9 ? "\(seconds)" : "0\(seconds)"
+//        let minutesString = minutes > 9 ? "\(minutes)" : "0\(minutes)"
+//        let hoursString = hours > 9 ? "\(hours)" : "0\(hours)"
+//        let timestring = "\(hoursString):\(minutesString):\(secondsString).\(fractionsString)"
+//        Time.text = timestring
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
