@@ -16,6 +16,10 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background.png")
+        self.view.insertSubview(backgroundImage, at: 0)
 
         //Run a query to get total num of tasks completed
         
