@@ -102,6 +102,9 @@ class ViewController: UIViewController {
         backgroundImage.image = UIImage(named: "background.png")
         self.view.insertSubview(backgroundImage, at: 0)
 
+     Time.isHidden = true
+        timer.countDownDuration = (00)
+        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
