@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var hour = 0
     var seconds = 0
     
+    
     @IBAction func tap(_ sender: Any) {
 //        if timerison == false{
 //            t = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
@@ -44,8 +45,7 @@ class ViewController: UIViewController {
     
     @IBAction func startButton(_ sender: Any) {
         
-     timer.countDownDuration = timer.countDownDuration * 60
-     t = Timer.scheduledTimer(timeInterval: 1.6667, target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
+     t = Timer.scheduledTimer(timeInterval: timer.countDownDuration, target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
         
         
         t.fire()
@@ -61,11 +61,10 @@ class ViewController: UIViewController {
     func count(){
         
          seconds = Int((timer.countDownDuration/60.0).rounded())
-         minute = Int(((timer.countDownDuration/60.0)/60.0).rounded())
-         hour = Int((((timer.countDownDuration/60.0)/60.0)/60.0).rounded())
-        
-        timer.countDownDuration -= 1
-        if minute > 60{
+         minute = Int(((timer.countDownDuration/60.0)/60).rounded())
+         hour = Int((((timer.countDownDuration/60.0)/60.0)/60).rounded())
+         timer.countDownDuration -= 1
+        if seconds > 3600{
         Time.text = String(hour)
         }else if seconds > 60{
         Time.text = String(minute)

@@ -16,6 +16,7 @@
 		7C535A911E665985006DFD28 /* Focus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C535A8F1E665985006DFD28 /* Focus.xcdatamodeld */; };
 		7C535A931E665985006DFD28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C535A921E665985006DFD28 /* Assets.xcassets */; };
 		7C535A961E665985006DFD28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C535A941E665985006DFD28 /* LaunchScreen.storyboard */; };
+		7C55D4DF1E7F0B0B00CF454A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C55D4DE1E7F0B0B00CF454A /* UIViewExtensions.swift */; };
 		7C738F831E7DCC7200688BFB /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C738F821E7DCC7200688BFB /* AnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		7C535A921E665985006DFD28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C535A951E665985006DFD28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C535A971E665985006DFD28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C55D4DE1E7F0B0B00CF454A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		7C738F821E7DCC7200688BFB /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +70,7 @@
 				7C535A8A1E665985006DFD28 /* ViewController.swift */,
 				7C535A8C1E665985006DFD28 /* Main.storyboard */,
 				7C738F821E7DCC7200688BFB /* AnimationViewController.swift */,
+				7C55D4DE1E7F0B0B00CF454A /* UIViewExtensions.swift */,
 				638380221E7A32970026BF20 /* HistoryTableViewCell.swift */,
 				638380201E7A30130026BF20 /* HistoryTableViewController.swift */,
 				6383801E1E7A2AC10026BF20 /* ProfileViewController.swift */,
@@ -154,6 +157,7 @@
 			files = (
 				638380231E7A32970026BF20 /* HistoryTableViewCell.swift in Sources */,
 				7C535A8B1E665985006DFD28 /* ViewController.swift in Sources */,
+				7C55D4DF1E7F0B0B00CF454A /* UIViewExtensions.swift in Sources */,
 				7C738F831E7DCC7200688BFB /* AnimationViewController.swift in Sources */,
 				7C535A911E665985006DFD28 /* Focus.xcdatamodeld in Sources */,
 				6383801F1E7A2AC10026BF20 /* ProfileViewController.swift in Sources */,
