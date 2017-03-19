@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     @IBAction func startButton(_ sender: Any) {
         
      timer.countDownDuration = timer.countDownDuration * 60
-     t = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
+     t = Timer.scheduledTimer(timeInterval: 1.6667, target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
         
         
         t.fire()
@@ -60,18 +60,19 @@ class ViewController: UIViewController {
     
     func count(){
         
-         seconds = Int((timer.countDownDuration/60).rounded())
-         minute = Int(((timer.countDownDuration/60.0)/60).rounded())
+         seconds = Int((timer.countDownDuration/60.0).rounded())
+         minute = Int(((timer.countDownDuration/60.0)/60.0).rounded())
          hour = Int((((timer.countDownDuration/60.0)/60.0)/60.0).rounded())
+        
         timer.countDownDuration -= 1
-        if Int(((timer.countDownDuration/60)/60).rounded()) > minute{
+        if minute > 60{
         Time.text = String(hour)
-        }else if timer.countDownDuration/60 > 60{
+        }else if seconds > 60{
         Time.text = String(minute)
         }else{
         Time.text = String(seconds)
         }
-        
+       
     
 //        Time.text = String(Int(timer.countDownDuration.rounded()))
     }
