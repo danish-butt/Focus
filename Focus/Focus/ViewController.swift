@@ -14,11 +14,12 @@ class ViewController: UIViewController {
     @IBOutlet var Start: UIButton!
     @IBOutlet var Time: UILabel!
     @IBOutlet var not: UILabel!
-    
     var t = Timer()
     var timestring = ""
     var timerison = false
-
+    var minute = 0
+    var hour = 0
+    var seconds = 0
     
     @IBAction func tap(_ sender: Any) {
 //        if timerison == false{
@@ -42,10 +43,9 @@ class ViewController: UIViewController {
     
     
     @IBAction func startButton(_ sender: Any) {
-       
-       timer.countDownDuration = timer.countDownDuration * 60
-       t = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
         
+     timer.countDownDuration = timer.countDownDuration * 60
+     t = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
         
         
         t.fire()
@@ -57,68 +57,37 @@ class ViewController: UIViewController {
         not.isHidden = true
     }
     
+    
     func count(){
+        
+         seconds = Int((timer.countDownDuration/60).rounded())
+         minute = Int(((timer.countDownDuration/60.0)/60).rounded())
+         hour = Int((((timer.countDownDuration/60.0)/60.0)/60.0).rounded())
         timer.countDownDuration -= 1
-//        Time.text = "Minutes" + String((timer.countDownDuration/60)) + "Seconds" + String(timer.countDownDuration/60)
-        
-        Time.text = String((timer.countDownDuration/60))
-//
-//        if a > 60 {
-//            b = a / 60
-//            Time.text = "\(b) M and \(a) S"
-//        }
-        
-//        t = Timer.scheduledTimer(timeInterval: timer.countDownDuration, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
-//    }
-//    
-//    func update(){
-//        
-//        fractions -= 100
-//        if fractions == 1{
-//            
-//            seconds -= 1
-//            fractions = 0
-//        }
-//        
-//        if seconds == 60{
-//            
-//            minutes -= 1
-//            seconds = 0
-//        }
-//        
-//        if minutes == 60{
-//            
-//            hours -= 1
-//            minutes = 0
-//        }
-//    
-//        let fractionsString = fractions > 9 ? "\(fractions)" : "0\(fractions)"
-//        let secondsString = seconds > 9 ? "\(seconds)" : "0\(seconds)"
-//        let minutesString = minutes > 9 ? "\(minutes)" : "0\(minutes)"
-//        let hoursString = hours > 9 ? "\(hours)" : "0\(hours)"
-//        let timestring = "\(hoursString):\(minutesString):\(secondsString).\(fractionsString)"
-//        Time.text = timestring
+        if Int(((timer.countDownDuration/60)/60).rounded()) > minute{
+        Time.text = String(hour)
+        }else if timer.countDownDuration/60 > 60{
+        Time.text = String(minute)
+        }else{
+        Time.text = String(seconds)
+        }
+//        Time.text = String(Int(timer.countDownDuration.rounded()))
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "background.png")
         self.view.insertSubview(backgroundImage, at: 0)
-
-     Time.isHidden = true
+          Time.isHidden = true
      timer.countDownDuration = (00)
-                // Do any additional setup after loading the view, typically from a nib.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-//    func takeout(){
-//        
-//    }
-
 
 }
 
