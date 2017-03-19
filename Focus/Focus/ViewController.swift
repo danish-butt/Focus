@@ -11,70 +11,68 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var timer: UIDatePicker!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet var dis2: UILabel!
+    @IBOutlet var dis1: UILabel!
     @IBOutlet var Start: UIButton!
     @IBOutlet var Time: UILabel!
     @IBOutlet var not: UILabel!
     var t = Timer()
     var timestring = ""
     var timerison = false
-    var minute = 0
-    var hour = 0
-    var seconds = 0
+    
+
     
     
     @IBAction func tap(_ sender: Any) {
-//        if timerison == false{
-//            t = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
-//        count()
-           t.invalidate()
-        
+        t.invalidate()
         nameTextField.isHidden = false
         timer.isHidden = false
         Start.isHidden = false
         Time.isHidden = true
         not.isHidden = false
-//        }
-//        if timerison == true{
-//            t.invalidate()
-//            timerison = false
-//        }
-//        
-//        timerison = true
+        dis2.isHidden = false
+        dis1.isHidden = false
     }
     
     
     @IBAction func startButton(_ sender: Any) {
         
-     t = Timer.scheduledTimer(timeInterval: timer.countDownDuration, target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
-        
-        
+     t = Timer.scheduledTimer(timeInterval: 60 , target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
         t.fire()
+        if timer.countDownDuration == 0.0{
+            
+        }
         
         nameTextField.isHidden = true
         timer.isHidden = true
         Start.isHidden = true
         Time.isHidden = false
         not.isHidden = true
+        dis2.isHidden = true
+        dis1.isHidden = true
     }
     
     
     func count(){
         
-         seconds = Int((timer.countDownDuration/60.0).rounded())
-         minute = Int(((timer.countDownDuration/60.0)/60).rounded())
-         hour = Int((((timer.countDownDuration/60.0)/60.0)/60).rounded())
+         let minute = Int(((timer.countDownDuration/60.0)).rounded())
+         let hour = Int((((timer.countDownDuration/60.0)/60.0)).rounded())
          timer.countDownDuration -= 1
-        if seconds > 3600{
-        Time.text = String(hour)
-        }else if seconds > 60{
-        Time.text = String(minute)
-        }else{
-        Time.text = String(seconds)
+        
+         if minute >= 120{
+            Time.text = String(hour) + " Hours"
         }
-       
-    
-//        Time.text = String(Int(timer.countDownDuration.rounded()))
-    }
+         else if minute >= 60 && minute < 120 {
+            Time.text = String(hour) + " Hour"
+        }
+         else if minute == 1{
+            Time.text = String(minute) + " Minute"
+        }
+         else{
+            Time.text = String(minute) + " Minutes"
+        }
+        
+       }
     
 
     override func viewDidLoad() {
