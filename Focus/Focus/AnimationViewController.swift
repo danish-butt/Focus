@@ -36,12 +36,7 @@ class AnimationViewController: UIViewController {
         ball.frame = CGRect(x: 0, y: 270, width: 150, height: 150)
         ball.layer.cornerRadius = 140
         self.view.addSubview(ball)
-     
     }
-    
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

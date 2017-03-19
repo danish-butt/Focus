@@ -71,6 +71,8 @@ class ViewController: UIViewController {
         }else{
         Time.text = String(seconds)
         }
+        
+    
 //        Time.text = String(Int(timer.countDownDuration.rounded()))
     }
     
