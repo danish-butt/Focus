@@ -266,6 +266,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXh-jk-m3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="qSj-es-wPB">
                     <connections>
+                        <action selector="stopmusic:" destination="Mzb-GD-1cB" id="fIp-9S-qyV"/>
                         <segue destination="yQ0-Tg-Qzo" kind="show" id="Ug9-B7-eOy"/>
                     </connections>
                 </tapGestureRecognizer>

@@ -7,12 +7,18 @@
 //
 
 import UIKit
+//import AudioToolbox
+//import AVFoundation
 
-class AnimationViewController: UIViewController {
+class AnimationViewController: UIViewController{
+    //AVAudioPlayerDelegate
     
     @IBOutlet var Start: UILabel!
     @IBOutlet var welcometofocus: UILabel!
     @IBOutlet var animationsubview: UIView!
+//    var audioPlayer = AVAudioPlayer()
+    
+    
     
     func animateLable(){
         UIView.animate(withDuration: 3.0, delay: 0.0, options: .curveEaseOut, animations: {
@@ -42,15 +48,16 @@ class AnimationViewController: UIViewController {
         animationsubview.frame = CGRect(x:115, y:270, width: 195, height: 180)
         animationsubview.backgroundColor = UIColor(patternImage: UIImage(named: "Arrow")!)
         animationsubview.rotateclock(duration: 20, completionDelegate: nil)
-//        [view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Arrow"]]]
-        
     }
+    
+//    @IBAction func stopmusic(_ sender: UITapGestureRecognizer) {
+//        audioPlayer.stop()
+//    }
 
     func ball(){
         let ball = UIView()
         ball.backgroundColor = UIColor.red
         ball.frame = CGRect(x: 320, y: 640, width: 85, height: 85)
-//        ball.layer.cornerRadius = 200
         self.view.addSubview(ball)
         UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 20, initialSpringVelocity: 10, options: [UIViewAnimationOptions.repeat,UIViewAnimationOptions.curveLinear,UIViewAnimationOptions.autoreverse], animations: {
             ball.backgroundColor = UIColor.black
@@ -63,7 +70,6 @@ class AnimationViewController: UIViewController {
         let ball2 = UIView()
         ball2.backgroundColor = UIColor.red
         ball2.frame = CGRect(x: 0, y: 640, width: 85, height: 85)
-//        ball2.layer.cornerRadius = 200
         self.view.addSubview(ball2)
         UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 20, initialSpringVelocity: 10, options: [UIViewAnimationOptions.repeat,UIViewAnimationOptions.curveLinear,UIViewAnimationOptions.autoreverse], animations: {
             ball2.backgroundColor = UIColor.black
@@ -75,7 +81,6 @@ class AnimationViewController: UIViewController {
         let ball3 = UIView()
         ball3.backgroundColor = UIColor.red
         ball3.frame = CGRect(x: 320, y: 20, width: 85, height: 85)
-        //        ball.layer.cornerRadius = 200
         self.view.addSubview(ball3)
         UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 20, initialSpringVelocity: 10, options: [UIViewAnimationOptions.repeat,UIViewAnimationOptions.curveLinear,UIViewAnimationOptions.autoreverse], animations: {
             ball3.backgroundColor = UIColor.black
@@ -88,7 +93,6 @@ class AnimationViewController: UIViewController {
         let ball4 = UIView()
         ball4.backgroundColor = UIColor.red
         ball4.frame = CGRect(x: 0, y: 20, width: 85, height: 85)
-        //        ball2.layer.cornerRadius = 200
         self.view.addSubview(ball4)
         UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 20, initialSpringVelocity: 10, options: [UIViewAnimationOptions.repeat,UIViewAnimationOptions.curveLinear,UIViewAnimationOptions.autoreverse], animations: {
             ball4.backgroundColor = UIColor.black
@@ -100,6 +104,13 @@ class AnimationViewController: UIViewController {
         super.viewDidLoad()
     animateLable()
     animateLable2()
+//          do {
+//            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Rooster", ofType: "mp3")!))
+//            audioPlayer.play()
+//        }
+//        catch{
+//            print(error)
+//        }
     }
     override func viewDidAppear(_ animated: Bool) {
         ball()
@@ -109,10 +120,8 @@ class AnimationViewController: UIViewController {
         drawclock()
     }
 
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
-
 }

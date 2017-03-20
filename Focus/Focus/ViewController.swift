@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import AudioToolbox
+import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
+//AVAudioPlayerDelegate
     @IBOutlet weak var timer: UIDatePicker!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet var dis2: UILabel!
@@ -19,9 +22,7 @@ class ViewController: UIViewController {
     var t = Timer()
     var timestring = ""
     var timerison = false
-    
-
-    
+//    var player = AVAudioPlayer()
     
     @IBAction func tap(_ sender: Any) {
         t.invalidate()
@@ -37,6 +38,7 @@ class ViewController: UIViewController {
         not.isHidden = false
         dis2.isHidden = false
         dis1.text = "Write The Task And Hit Start To Start Timer"
+//        player.stop()
     }
     
     
@@ -52,6 +54,7 @@ class ViewController: UIViewController {
         not.isHidden = true
         dis2.isHidden = true
         dis1.text = "When Timer Is Done, Tap It To Stop"
+//        player.play()
     }
     
     
@@ -92,6 +95,15 @@ class ViewController: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
           Time.isHidden = true
      timer.countDownDuration = (00)
+//        do {
+//            player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Rooster", ofType: "wav")!))
+//            player.prepareToPlay()
+//        }
+//        catch{
+//            print(error)
+//        }
+
+        
     }
     
 

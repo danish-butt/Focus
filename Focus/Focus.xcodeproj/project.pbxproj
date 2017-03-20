@@ -17,6 +17,8 @@
 		7C535A931E665985006DFD28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C535A921E665985006DFD28 /* Assets.xcassets */; };
 		7C535A961E665985006DFD28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C535A941E665985006DFD28 /* LaunchScreen.storyboard */; };
 		7C55D4DF1E7F0B0B00CF454A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C55D4DE1E7F0B0B00CF454A /* UIViewExtensions.swift */; };
+		7C55D4E61E7F866A00CF454A /* Rooster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7C55D4E81E7F866A00CF454A /* Rooster.mp3 */; };
+		7C55D4E91E7F867900CF454A /* Tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7C55D4EB1E7F867900CF454A /* Tick.mp3 */; };
 		7C738F831E7DCC7200688BFB /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C738F821E7DCC7200688BFB /* AnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,10 @@
 		7C535A951E665985006DFD28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C535A971E665985006DFD28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C55D4DE1E7F0B0B00CF454A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		7C55D4E71E7F866A00CF454A /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Rooster.mp3; sourceTree = "<group>"; };
+		7C55D4EA1E7F867900CF454A /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Tick.mp3; sourceTree = "<group>"; };
+		7C55D4EC1E7F86F800CF454A /* en */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = en; path = en.lproj/Tick.mp3; sourceTree = "<group>"; };
+		7C55D4ED1E7F870000CF454A /* en */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = en; path = en.lproj/Rooster.mp3; sourceTree = "<group>"; };
 		7C738F821E7DCC7200688BFB /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +58,8 @@
 			children = (
 				7C535A871E665985006DFD28 /* Focus */,
 				7C535A861E665985006DFD28 /* Products */,
+				7C55D4E81E7F866A00CF454A /* Rooster.mp3 */,
+				7C55D4EB1E7F867900CF454A /* Tick.mp3 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,7 +152,9 @@
 			files = (
 				7C535A961E665985006DFD28 /* LaunchScreen.storyboard in Resources */,
 				7C535A931E665985006DFD28 /* Assets.xcassets in Resources */,
+				7C55D4E91E7F867900CF454A /* Tick.mp3 in Resources */,
 				7C535A8E1E665985006DFD28 /* Main.storyboard in Resources */,
+				7C55D4E61E7F866A00CF454A /* Rooster.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +193,24 @@
 				7C535A951E665985006DFD28 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7C55D4E81E7F866A00CF454A /* Rooster.mp3 */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C55D4E71E7F866A00CF454A /* Base */,
+				7C55D4ED1E7F870000CF454A /* en */,
+			);
+			name = Rooster.mp3;
+			sourceTree = "<group>";
+		};
+		7C55D4EB1E7F867900CF454A /* Tick.mp3 */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C55D4EA1E7F867900CF454A /* Base */,
+				7C55D4EC1E7F86F800CF454A /* en */,
+			);
+			name = Tick.mp3;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
