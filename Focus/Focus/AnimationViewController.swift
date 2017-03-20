@@ -50,9 +50,6 @@ class AnimationViewController: UIViewController{
         animationsubview.rotateclock(duration: 20, completionDelegate: nil)
     }
     
-//    @IBAction func stopmusic(_ sender: UITapGestureRecognizer) {
-//        audioPlayer.stop()
-//    }
 
     func ball(){
         let ball = UIView()
