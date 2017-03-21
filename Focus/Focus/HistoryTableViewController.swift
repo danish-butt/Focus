@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class HistoryTableViewController: UITableViewController {
+    
+    var activities : [ActivityMO] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,13 @@ class HistoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath) as! HistoryTableViewCell
         
         //set the cell labels
+        var cellItem : ActivityMO
+        cellItem = activities[indexPath.row]
+        
+        cell.taskName?.text = cellItem.activityName
+        cell.timeSpent?.text = String(cellItem.activityTime) + " minutes"
+        
+        cell.accessoryType = cellItem.activityCompletion ? .checkmark : .none
         
         return cell
     }
