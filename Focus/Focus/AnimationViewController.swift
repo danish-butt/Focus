@@ -47,7 +47,7 @@ class AnimationViewController: UIViewController{
     func drawclock(){
         animationsubview.frame = CGRect(x:115, y:270, width: 195, height: 180)
         animationsubview.backgroundColor = UIColor(patternImage: UIImage(named: "Arrow")!)
-        animationsubview.rotateclock(duration: 20, completionDelegate: nil)
+        animationsubview.rotateclock(duration: 30, completionDelegate: nil)
     }
     
 

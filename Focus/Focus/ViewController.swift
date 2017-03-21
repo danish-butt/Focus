@@ -48,6 +48,7 @@ class ViewController: UIViewController{
         t.fire()
 
         nameTextField.isHidden = true
+//        timer.datePickerMode = .countDownTimer
         timer.isHidden = true
         Start.isHidden = true
         Time.isHidden = false
@@ -59,20 +60,23 @@ class ViewController: UIViewController{
     
     
     func count(){
+
+        timer.countDownDuration -= 1
         
-         let minute = Int(((timer.countDownDuration/60.0)).rounded())
+        let seconds = Int((timer.countDownDuration).rounded())
+        let minute = Int(((timer.countDownDuration/60.0)).rounded())
          let hour = Int((((timer.countDownDuration/60.0)/60.0)).rounded())
-        
-         timer.countDownDuration -= 1
+        let minute2 = Int(minute - (hour * 60))
+        let hour2 = Int()
         
          if minute >= 120{
-                Time.text = String(hour) + " Hours " + "0" + " Minutes"
+                Time.text = String(hour) + " Hours " + String(minute2) + " Minutes "
         }
          else if minute >= 60 && minute < 120 {
-                Time.text = String(hour) + " Hour " + "0" + " Minutes"
+                Time.text = String(hour) + " Hour " + String(minute2) + " Minutes"
         }
          else if minute == 1{
-            Time.text = "0" + " Hours " + String(minute) + " Minute"
+            Time.text = String( " Hours " + String(minute) + " Minute")
         }
          else if minute < 60{
             Time.text = "0" + " Hours " + String(minute) + " Minutes"
