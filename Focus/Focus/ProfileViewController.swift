@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
-    @IBOutlet var numTotalTasksCompleted: UILabel!
-    @IBOutlet var averageTimeSpentOnATask: UILabel!
-    @IBOutlet var averageNumTasksCompletedPerDay: UILabel!
+    @IBOutlet var numCompleted: UILabel!
+    @IBOutlet var calculatedSuccessRate: UILabel!
+    @IBOutlet var numAttempted: UILabel!
+    
+    var myListObjects : [ActivityMO] = []
+    var fetchResultsController : NSFetchedResultsController<ActivityMO>!
+    
+    var numTasksCompleted = 0
+    var numTasksAttempted = 0
+    var successRate = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,18 +28,49 @@ class ProfileViewController: UIViewController {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "background.png")
         self.view.insertSubview(backgroundImage, at: 0)
-
-        //Run a query to get total num of tasks completed
-        
-        //Run a query to get total time spent on tasks
-        
-        //Calculate the average time spent on a task
-        
-        //Run a query to get number of days app was used
-        
-        //Calculate average number of tasks completed
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let fetchRequest : NSFetchRequest<ActivityMO> = ActivityMO.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "activityName", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            fetchResultsController.delegate = self
+            
+            do {
+                try fetchResultsController.performFetch()
+                if let fetchedObjects = fetchResultsController.fetchedObjects {
+                    myListObjects = fetchedObjects
+                }
+                
+                
+            } catch {
+                print(error)
+            }
+        }
+        
+        numTasksCompleted = 0
+        
+        //Find out how many tasks were completed
+        for item in myListObjects {
+            if item.activityCompletion {
+                numTasksCompleted += 1
+            }
+        }
+        
+        numTasksAttempted = myListObjects.count
+        
+        numCompleted.text = String(numTasksCompleted)
+        numAttempted.text = String(numTasksAttempted)
+        
+        successRate = Double(numTasksCompleted) / Double(numTasksAttempted) * 100.0
+        
+        calculatedSuccessRate.text = String(successRate) + "%"
     }
 
     override func didReceiveMemoryWarning() {
