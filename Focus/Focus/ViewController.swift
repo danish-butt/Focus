@@ -11,6 +11,9 @@ import AudioToolbox
 import AVFoundation
 
 class ViewController: UIViewController{
+    
+    var newListItem : ActivityMO!
+    
 //AVAudioPlayerDelegate
     @IBOutlet weak var timer: UIDatePicker!
     @IBOutlet weak var nameTextField: UITextField!
@@ -22,14 +25,42 @@ class ViewController: UIViewController{
     var t = Timer()
     var timestring = ""
     var timerison = false
-//    var player = AVAudioPlayer()
     
+//    var player = AVAudioPlayer()
+    func clickedSave() {
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            newListItem = ActivityMO(context: appDelegate.persistentContainer.viewContext)
+            
+            newListItem.activityName = nameTextField.text
+            newListItem.activityTime = Time.text
+            newListItem.activityCompletion = true
+            
+            appDelegate.saveContext()
+            nameTextField.text = ""
+            
+        }
+    }
+        
+        func clickedDismiss() {
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                newListItem = ActivityMO(context: appDelegate.persistentContainer.viewContext)
+                
+                newListItem.activityName = nameTextField.text
+                newListItem.activityTime = Time.text
+                newListItem.activityCompletion = false
+                
+                appDelegate.saveContext()
+                nameTextField.text = ""
+                
+            }
+        
+        }
     @IBAction func tap(_ sender: Any) {
         t.invalidate()
         let alertController = UIAlertController(title: nameTextField.text, message:
             "DONE!🎉", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "save", style: UIAlertActionStyle.default,handler: nil))
-        alertController.addAction(UIAlertAction(title: "dismiss", style: UIAlertActionStyle.default,handler: nil))
+        alertController.addAction(UIAlertAction(title: "save", style: UIAlertActionStyle.default,handler: {(alert: UIAlertAction!) in self.clickedSave()}))
+        alertController.addAction(UIAlertAction(title: "dismiss", style: UIAlertActionStyle.default,handler:{(alert: UIAlertAction!) in self.clickedDismiss()}))
         self.present(alertController, animated: true, completion: nil)
         nameTextField.isHidden = false
         timer.isHidden = false
@@ -44,7 +75,7 @@ class ViewController: UIViewController{
     
     @IBAction func startButton(_ sender: Any) {
         
-     t = Timer.scheduledTimer(timeInterval: 60 , target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
+     t = Timer.scheduledTimer(timeInterval: 1 , target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
         t.fire()
 
         nameTextField.isHidden = true
@@ -84,8 +115,8 @@ class ViewController: UIViewController{
             t.invalidate()
             let alertController = UIAlertController(title: nameTextField.text, message:
                 "DONE!🎉", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "save", style: UIAlertActionStyle.default,handler: nil))
-            alertController.addAction(UIAlertAction(title: "dismiss", style: UIAlertActionStyle.default,handler: nil))
+            alertController.addAction(UIAlertAction(title: "save", style: UIAlertActionStyle.default,handler: {(alert: UIAlertAction!) in self.clickedSave()}))
+            alertController.addAction(UIAlertAction(title: "dismiss", style: UIAlertActionStyle.default,handler:{(alert: UIAlertAction!) in self.clickedDismiss()}))
             self.present(alertController, animated: true, completion: nil)
         }
        }
