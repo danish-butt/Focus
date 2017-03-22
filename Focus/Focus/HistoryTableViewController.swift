@@ -9,10 +9,9 @@
 import UIKit
 import CoreData
 
-class HistoryTableViewController: UITableViewController {
-    
-    var activities : [ActivityMO] = []
-
+class HistoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    var myListObjects : [ActivityMO] = []
+    var fetchResultsController : NSFetchedResultsController<ActivityMO>!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,12 +20,69 @@ class HistoryTableViewController: UITableViewController {
         self.view.insertSubview(backgroundImage, at: 0)
         
 
+        let fetchRequest : NSFetchRequest<ActivityMO> = ActivityMO.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "activityName", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            let context = appDelegate.persistentContainer.viewContext
+            fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            fetchResultsController.delegate = self
+            
+            do {
+                try fetchResultsController.performFetch()
+                if let fetchedObjects = fetchResultsController.fetchedObjects {
+                    myListObjects = fetchedObjects
+                }
+                
+                
+            } catch {
+                print(error)
+            }
+        }
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            
+        case .update:
+            if let indexPath = indexPath {
+                tableView.reloadRows(at:[indexPath], with: .fade)
+            }
+        default:
+            tableView.reloadData()
+        }
+        
+        if let fetchedObjects = controller.fetchedObjects {
+            myListObjects = fetchedObjects as! [ActivityMO]
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +99,7 @@ class HistoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return myListObjects.count
     }
 
     
@@ -52,10 +108,9 @@ class HistoryTableViewController: UITableViewController {
         
         //set the cell labels
         var cellItem : ActivityMO
-        cellItem = activities[indexPath.row]
-        
+        cellItem = myListObjects[indexPath.row]
         cell.taskName?.text = cellItem.activityName
-        cell.timeSpent?.text = String(cellItem.activityTime) + " minutes"
+        cell.timeSpent?.text = cellItem.activityTime! + " minutes"
         
         cell.accessoryType = cellItem.activityCompletion ? .checkmark : .none
         
@@ -71,17 +126,22 @@ class HistoryTableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            // myListObjects.remove(at: indexPath.row)
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                let context = appDelegate.persistentContainer.viewContext
+                let itemToDelete = self.fetchResultsController.object(at: indexPath)
+                context.delete(itemToDelete)
+                appDelegate.saveContext()
+            }
+            
+            // tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
