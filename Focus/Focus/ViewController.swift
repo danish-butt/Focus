@@ -63,11 +63,10 @@ class ViewController: UIViewController{
 
         timer.countDownDuration -= 1
         
-        let seconds = Int((timer.countDownDuration).rounded())
         let minute = Int(((timer.countDownDuration/60.0)).rounded())
          let hour = Int((((timer.countDownDuration/60.0)/60.0)).rounded())
         let minute2 = Int(minute - (hour * 60))
-        let hour2 = Int()
+       
         
          if minute >= 120{
                 Time.text = String(hour) + " Hours " + String(minute2) + " Minutes "
