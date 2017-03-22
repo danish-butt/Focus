@@ -110,7 +110,7 @@ class HistoryTableViewController: UITableViewController, NSFetchedResultsControl
         var cellItem : ActivityMO
         cellItem = myListObjects[indexPath.row]
         cell.taskName?.text = cellItem.activityName
-        cell.timeSpent?.text = cellItem.activityTime! + " minutes"
+        cell.timeSpent?.text = String(cellItem.activityTime) + " minutes"
         
         cell.accessoryType = cellItem.activityCompletion ? .checkmark : .none
         

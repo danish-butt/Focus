@@ -32,7 +32,7 @@ class ViewController: UIViewController{
             newListItem = ActivityMO(context: appDelegate.persistentContainer.viewContext)
             
             newListItem.activityName = nameTextField.text
-            newListItem.activityTime = Time.text
+            newListItem.activityTime = Time.text!
             newListItem.activityCompletion = true
             
             appDelegate.saveContext()
@@ -46,7 +46,7 @@ class ViewController: UIViewController{
                 newListItem = ActivityMO(context: appDelegate.persistentContainer.viewContext)
                 
                 newListItem.activityName = nameTextField.text
-                newListItem.activityTime = Time.text
+                newListItem.activityTime = Time.text!
                 newListItem.activityCompletion = false
                 
                 appDelegate.saveContext()
@@ -75,9 +75,23 @@ class ViewController: UIViewController{
     
     @IBAction func startButton(_ sender: Any) {
         
-     t = Timer.scheduledTimer(timeInterval: 1 , target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
+     t = Timer.scheduledTimer(timeInterval:60 , target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
         t.fire()
-
+        if timer.countDownDuration == 0{
+            t.invalidate()
+            let alertController = UIAlertController(title: nameTextField.text, message:
+                "DONE!🎉", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "save", style: UIAlertActionStyle.default,handler: {(alert: UIAlertAction!) in self.clickedSave()}))
+            alertController.addAction(UIAlertAction(title: "dismiss", style: UIAlertActionStyle.default,handler:{(alert: UIAlertAction!) in self.clickedDismiss()}))
+            self.present(alertController, animated: true, completion: nil)
+            nameTextField.isHidden = false
+            timer.isHidden = false
+            Start.isHidden = false
+            Time.isHidden = true
+            not.isHidden = false
+            dis2.isHidden = false
+            dis1.text = "Write The Task And Hit Start To Start Timer"
+        }
         nameTextField.isHidden = true
 //        timer.datePickerMode = .countDownTimer
         timer.isHidden = true
