@@ -12,6 +12,7 @@ import CoreData
 class HistoryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     var myListObjects : [ActivityMO] = []
     var fetchResultsController : NSFetchedResultsController<ActivityMO>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,6 +112,7 @@ class HistoryTableViewController: UITableViewController, NSFetchedResultsControl
         cellItem = myListObjects[indexPath.row]
         cell.taskName?.text = cellItem.activityName
         cell.timeSpent?.text = cellItem.activityTime!
+        cell.backgroundColor = UIColor.clear
         
         cell.accessoryType = cellItem.activityCompletion ? .checkmark : .none
         
