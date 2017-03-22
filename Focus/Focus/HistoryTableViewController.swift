@@ -5,7 +5,7 @@
 //  Created by Jaydeep Singh on 3/15/17.
 //  Copyright © 2017 Group. All rights reserved.
 //
-
+// CoreData Done by DANISH BUTT
 import UIKit
 import CoreData
 
@@ -110,7 +110,7 @@ class HistoryTableViewController: UITableViewController, NSFetchedResultsControl
         var cellItem : ActivityMO
         cellItem = myListObjects[indexPath.row]
         cell.taskName?.text = cellItem.activityName
-        cell.timeSpent?.text = String(cellItem.activityTime) + " minutes"
+        cell.timeSpent?.text = String(describing: cellItem.activityTime) + " minutes"
         
         cell.accessoryType = cellItem.activityCompletion ? .checkmark : .none
         

@@ -5,6 +5,7 @@
 //  Created by Michael Danylchuk on 3/18/17.
 //  Copyright © 2017 Group. All rights reserved.
 //
+// Animations done by MICHAEL DANYLCHUK
 
 import UIKit
 //import AudioToolbox

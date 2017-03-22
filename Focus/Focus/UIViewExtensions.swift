@@ -5,6 +5,7 @@
 //  Created by Michael Danylchuk on 3/19/17.
 //  Copyright © 2017 Group. All rights reserved.
 //
+// This file DONE BY MICHAEL DANYLCHUK
 
 import Foundation
 import UIKit

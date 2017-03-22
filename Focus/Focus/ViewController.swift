@@ -6,15 +6,18 @@
 //  Copyright © 2017 Group. All rights reserved.
 //
 
+// Timer and other code on this page (MICHAEL DANYLCHUK)
+// Design aspect of page (SOUMYA SAXENA)
+
 import UIKit
 import AudioToolbox
 import AVFoundation
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, AVAudioPlayerDelegate{
     
     var newListItem : ActivityMO!
     
-//AVAudioPlayerDelegate
+//    var player2 : AVAudioPlayer!
     @IBOutlet weak var timer: UIDatePicker!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet var dis2: UILabel!
@@ -26,7 +29,6 @@ class ViewController: UIViewController{
     var timestring = ""
     var timerison = false
     
-//    var player = AVAudioPlayer()
     func clickedSave() {
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
             newListItem = ActivityMO(context: appDelegate.persistentContainer.viewContext)
@@ -56,11 +58,16 @@ class ViewController: UIViewController{
         
         }
     @IBAction func tap(_ sender: Any) {
+        
         t.invalidate()
         let alertController = UIAlertController(title: nameTextField.text, message:
             "DONE!🎉", preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "save", style: UIAlertActionStyle.default,handler: {(alert: UIAlertAction!) in self.clickedSave()}))
         alertController.addAction(UIAlertAction(title: "dismiss", style: UIAlertActionStyle.default,handler:{(alert: UIAlertAction!) in self.clickedDismiss()}))
+//        if player2 != nil{
+//            player2.stop()
+//            player2 = nil
+//        }
         self.present(alertController, animated: true, completion: nil)
         nameTextField.isHidden = false
         timer.isHidden = false
@@ -69,15 +76,16 @@ class ViewController: UIViewController{
         not.isHidden = false
         dis2.isHidden = false
         dis1.text = "Write The Task And Hit Start To Start Timer"
-//        player.stop()
+        
     }
     
     
     @IBAction func startButton(_ sender: Any) {
         
+        timer.countDownDuration = timer.countDownDuration + 1
      t = Timer.scheduledTimer(timeInterval:60 , target: self, selector: #selector(ViewController.count), userInfo: nil, repeats: true)
         t.fire()
-        if timer.countDownDuration == 0{
+        if timer.countDownDuration == 1{
             t.invalidate()
             let alertController = UIAlertController(title: nameTextField.text, message:
                 "DONE!🎉", preferredStyle: UIAlertControllerStyle.alert)
@@ -100,7 +108,7 @@ class ViewController: UIViewController{
         not.isHidden = true
         dis2.isHidden = true
         dis1.text = "When Timer Is Done, Tap It To Stop"
-//        player.play()
+       
     }
     
     
@@ -108,8 +116,8 @@ class ViewController: UIViewController{
 
         timer.countDownDuration -= 1
         
-        let minute = Int(((timer.countDownDuration/60.0)).rounded())
-         let hour = Int((((timer.countDownDuration/60.0)/60.0)).rounded())
+        let minute = Int((((timer.countDownDuration - 1)/60.0)).rounded())
+         let hour = Int(((((timer.countDownDuration - 1)/60.0)/60.0)).rounded())
         let minute2 = Int(minute - (hour * 60))
        
         
@@ -120,7 +128,7 @@ class ViewController: UIViewController{
                 Time.text = String(hour) + " Hour " + String(minute2) + " Minutes"
         }
          else if minute == 1{
-            Time.text = String( " Hours " + String(minute) + " Minute")
+            Time.text = String( "0 Hours " + String(minute) + " Minute")
         }
          else if minute < 60{
             Time.text = "0" + " Hours " + String(minute) + " Minutes"
@@ -143,9 +151,12 @@ class ViewController: UIViewController{
         self.view.insertSubview(backgroundImage, at: 0)
           Time.isHidden = true
      timer.countDownDuration = (00)
+//        let path = Bundle.main.path(forResource: "Tick.mp3", ofType: nil)!
+//        let url = URL(fileURLWithPath: path)
 //        do {
-//            player = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "Rooster", ofType: "wav")!))
-//            player.prepareToPlay()
+//            let sound = try AVAudioPlayer(contentsOf: url)
+//            player2 = sound
+//            sound.play()
 //        }
 //        catch{
 //            print(error)
